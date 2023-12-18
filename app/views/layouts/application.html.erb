@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hospital Portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+  <!-- app/views/layouts/application.html.erb -->
+  <nav>
+    <% if policy(current_user).receptionist_dashboard? %>
+      <%= link_to "Receptionist Dashboard", receptionist_dashboard_path %>
+    <% elsif policy(current_user).doctor_dashboard? %>
+      <%= link_to "Doctor Dashboard", doctor_dashboard_path %>
+    <% else %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+  </nav>
+  
+    <div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
