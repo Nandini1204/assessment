@@ -1,5 +1,10 @@
 # app/models/doctor.rb
 class Doctor < ApplicationRecord
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
-  end
-  
+  # Include Devise modules for authentication
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  validates :name, presence: true
+
+  has_many :appointments
+end

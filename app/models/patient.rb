@@ -1,2 +1,7 @@
+# app/models/patient.rb
 class Patient < ApplicationRecord
-end
+    
+    belongs_to :receptionist
+    has_many :appointments
+  end
+  
